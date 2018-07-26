@@ -16,27 +16,26 @@ namespace Kata.NumberInWords
         [TestCase(7, "seven")]
         [TestCase(8, "eight")]
         [TestCase(9, "nine")]
-        public void Convert0To9(int number, string numberInWords)
+        [TestCase(10, "ten")]
+        [TestCase(11, "eleven")]
+        [TestCase(12, "twelve")]
+        [TestCase(13, "thirteen")]
+        [TestCase(14, "fourteen")]
+        [TestCase(15, "fiveteen")]
+        [TestCase(16, "sixteen")]
+        [TestCase(17, "seventeen")]
+        [TestCase(18, "eithteen")]
+        [TestCase(19, "nineteen")]
+        [TestCase(20, "twenty")]
+        public void Convert0To20(int number, string numberInWords)
         {
             Assert.That(NumberToWordConverter.ConvertToWord(number), Is.EqualTo(numberInWords));
-        }
-
-        [Test]
-        public void Convert10ToTen()
-        {
-            Assert.That(NumberToWordConverter.ConvertToWord(10), Is.EqualTo("ten"));
-        }
-
-        [Test]
-        public void Convert11ToEleven()
-        {
-            Assert.That(NumberToWordConverter.ConvertToWord(11), Is.EqualTo("eleven"));
         }
     }
 
     public class NumberToWordConverter
     {
-        private static Dictionary<int, string> oneToNine = new Dictionary<int, string>
+        private static Dictionary<int, string> zeroToTwenty = new Dictionary<int, string>
         {
             [0] = "zero",
             [1] = "one",
@@ -47,18 +46,24 @@ namespace Kata.NumberInWords
             [6] = "six",
             [7] = "seven",
             [8] = "eight",
-            [9] = "nine"
+            [9] = "nine",
+            [10] = "ten",
+            [11] = "eleven",
+            [12] = "twelve",
+            [13] = "thirteen",
+            [14] = "fourteen",
+            [15] = "fiveteen",
+            [16] = "sixteen",
+            [17] = "seventeen",
+            [18] = "eithteen",
+            [19] = "nineteen",
+            [20] = "twenty"
         };
 
-        private static Dictionary<int, string> tenToTwenty = new Dictionary<int, string>
-        {
-            [10] = "ten",
-            [11] = "eleven"
-        };
 
         public static string ConvertToWord(int number)
         {
-            return number > 9 ? tenToTwenty[number] : oneToNine[number];
+            return zeroToTwenty[number];
         }
     }
 }
