@@ -6,37 +6,41 @@ namespace Kata.NumberInWords
     [TestFixture]
     public class NumberInWordsConverterShould
     {
-        [Test]
-        public void Convert0ToOne()
+        [TestCase(0, "zero")]
+        [TestCase(1, "one")]
+        [TestCase(2, "two")]
+        [TestCase(3, "three")]
+        [TestCase(4, "four")]
+        [TestCase(5, "five")]
+        [TestCase(6, "six")]
+        [TestCase(7, "seven")]
+        [TestCase(8, "eight")]
+        [TestCase(9, "nine")]
+        public void Convert0To9(int number, string numberInWords)
         {
-            Assert.That(NumberToWordConverter.ConvertToWord(0), Is.EqualTo("zero"));
-        }
-
-        [Test]
-        public void Convert1ToOne()
-        {
-            Assert.That(NumberToWordConverter.ConvertToWord(1), Is.EqualTo("one"));
-        }
-
-        [Test]
-        public void Convert2ToTwo()
-        {
-            Assert.That(NumberToWordConverter.ConvertToWord(2), Is.EqualTo("two"));
+            Assert.That(NumberToWordConverter.ConvertToWord(number), Is.EqualTo(numberInWords));
         }
     }
 
     public class NumberToWordConverter
     {
-        private static Dictionary<int, string> oneToTen = new Dictionary<int, string>
+        private static Dictionary<int, string> oneToNine = new Dictionary<int, string>
         {
             [0] = "zero",
             [1] = "one",
             [2] = "two",
+            [3] = "three",
+            [4] = "four",
+            [5] = "five",
+            [6] = "six",
+            [7] = "seven",
+            [8] = "eight",
+            [9] = "nine"
         };
 
         public static string ConvertToWord(int number)
         {
-            return oneToTen[number];
+            return oneToNine[number];
         }
     }
 }
