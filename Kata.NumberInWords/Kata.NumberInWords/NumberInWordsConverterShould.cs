@@ -7,6 +7,12 @@ namespace Kata.NumberInWords
     public class NumberInWordsConverterShould
     {
         [Test]
+        public void Convert0ToOne()
+        {
+            Assert.That(NumberToWordConverter.ConvertToWord(0), Is.EqualTo("zero"));
+        }
+
+        [Test]
         public void Convert1ToOne()
         {
             Assert.That(NumberToWordConverter.ConvertToWord(1), Is.EqualTo("one"));
@@ -23,6 +29,7 @@ namespace Kata.NumberInWords
     {
         private static Dictionary<int, string> oneToTen = new Dictionary<int, string>
         {
+            [0] = "zero",
             [1] = "one",
             [2] = "two",
         };
