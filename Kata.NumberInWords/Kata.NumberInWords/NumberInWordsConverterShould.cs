@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Kata.NumberInWords
 {
@@ -6,17 +7,29 @@ namespace Kata.NumberInWords
     public class NumberInWordsConverterShould
     {
         [Test]
-        public void ConvertOneToOne()
+        public void Convert1ToOne()
         {
             Assert.That(NumberToWordConverter.ConvertToWord(1), Is.EqualTo("one"));
+        }
+
+        [Test]
+        public void Convert2ToTwo()
+        {
+            Assert.That(NumberToWordConverter.ConvertToWord(2), Is.EqualTo("two"));
         }
     }
 
     public class NumberToWordConverter
     {
+        private static Dictionary<int, string> oneToTen = new Dictionary<int, string>
+        {
+            [1] = "one",
+            [2] = "two",
+        };
+
         public static string ConvertToWord(int number)
         {
-            return "one";
+            return oneToTen[number];
         }
     }
 }
