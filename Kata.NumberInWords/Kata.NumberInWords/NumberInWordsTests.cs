@@ -6,9 +6,17 @@ namespace Kata.NumberInWords
     public class NumberInWordsTests
     {
         [Test]
-        public void T()
+        public void NumberOne_ReturnsOne()
         {
+            Assert.That(NumberToWordConverter.ConvertToWord(1), Is.EqualTo("one"));
+        }
+    }
 
+    public class NumberToWordConverter
+    {
+        public static string ConvertToWord(int number)
+        {
+            return "one";
         }
     }
 }
