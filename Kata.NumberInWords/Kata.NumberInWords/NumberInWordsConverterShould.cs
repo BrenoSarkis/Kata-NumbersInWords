@@ -3,10 +3,10 @@
 namespace Kata.NumberInWords
 {
     [TestFixture]
-    public class NumberInWordsTests
+    public class NumberInWordsConverterShould
     {
         [Test]
-        public void NumberOne_ReturnsOne()
+        public void ConvertOneToOne()
         {
             Assert.That(NumberToWordConverter.ConvertToWord(1), Is.EqualTo("one"));
         }
