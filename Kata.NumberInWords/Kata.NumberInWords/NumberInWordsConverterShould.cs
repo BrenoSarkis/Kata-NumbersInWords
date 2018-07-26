@@ -20,6 +20,12 @@ namespace Kata.NumberInWords
         {
             Assert.That(NumberToWordConverter.ConvertToWord(number), Is.EqualTo(numberInWords));
         }
+
+        [Test]
+        public void Convert10ToTen()
+        {
+            Assert.That(NumberToWordConverter.ConvertToWord(10), Is.EqualTo("ten"));
+        }
     }
 
     public class NumberToWordConverter
@@ -40,6 +46,11 @@ namespace Kata.NumberInWords
 
         public static string ConvertToWord(int number)
         {
+            if (number > 9)
+            {
+                return "ten";
+            }
+
             return oneToNine[number];
         }
     }
