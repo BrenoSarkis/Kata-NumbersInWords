@@ -29,21 +29,18 @@ namespace Kata.NumberInWords
         [TestCase(18, "eithteen")]
         [TestCase(19, "nineteen")]
         [TestCase(20, "twenty")]
-        public void Convert0To20(int number, string numberInWords)
+        [TestCase(21, "twenty one")]
+        [TestCase(32, "thirty two")]
+        [TestCase(43, "fourty three")]
+        [TestCase(54, "fifty four")]
+        [TestCase(65, "sixty five")]
+        [TestCase(76, "seventy six")]
+        [TestCase(87, "eighty seven")]
+        [TestCase(98, "ninety eight")]
+        [TestCase(99, "ninety nine")]
+        public void Convert0To99(int number, string numberInWords)
         {
             Assert.That(NumberToWordConverter.ConvertToWord(number), Is.EqualTo(numberInWords));
-        }
-
-        [Test]
-        public void Convert21toTwentyOne()
-        {
-            Assert.That(NumberToWordConverter.ConvertToWord(21), Is.EqualTo("twenty one"));
-        }
-
-        [Test]
-        public void Convert31toThirtyOne()
-        {
-            Assert.That(NumberToWordConverter.ConvertToWord(31), Is.EqualTo("thirty one"));
         }
     }
 
@@ -77,7 +74,13 @@ namespace Kata.NumberInWords
         private static Dictionary<int, string> dozens = new Dictionary<int, string>
         {
             [2] = "twenty",
-            [3] = "thirty"
+            [3] = "thirty",
+            [4] = "fourty",
+            [5] = "fifty",
+            [6] = "sixty",
+            [7] = "seventy",
+            [8] = "eighty",
+            [9] = "ninety"
         };
 
         public static string ConvertToWord(int number)
