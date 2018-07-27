@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Kata.NumberInWords
@@ -37,6 +39,12 @@ namespace Kata.NumberInWords
         {
             Assert.That(NumberToWordConverter.ConvertToWord(21), Is.EqualTo("twenty one"));
         }
+
+        [Test]
+        public void Convert31toThirtyOne()
+        {
+            Assert.That(NumberToWordConverter.ConvertToWord(31), Is.EqualTo("thirty one"));
+        }
     }
 
     public class NumberToWordConverter
@@ -68,14 +76,17 @@ namespace Kata.NumberInWords
 
         private static Dictionary<int, string> dozens = new Dictionary<int, string>
         {
-            [2] = "twenty"
+            [2] = "twenty",
+            [3] = "thirty"
         };
 
         public static string ConvertToWord(int number)
         {
+            var numbersInNumber = number.ToString().ToCharArray().Select(n => Int32.Parse(n.ToString())).ToArray();
+
             if (number > 20)
             {
-                return dozens[2] + " " + zeroToTwenty[1];
+                return dozens[numbersInNumber[0]] + " " + zeroToTwenty[numbersInNumber[1]];
             }
             return zeroToTwenty[number];
         }
