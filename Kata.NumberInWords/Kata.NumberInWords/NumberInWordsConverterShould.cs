@@ -31,6 +31,12 @@ namespace Kata.NumberInWords
         {
             Assert.That(NumberToWordConverter.ConvertToWord(number), Is.EqualTo(numberInWords));
         }
+
+        [Test]
+        public void Convert21toTwentyOne()
+        {
+            Assert.That(NumberToWordConverter.ConvertToWord(21), Is.EqualTo("twenty one"));
+        }
     }
 
     public class NumberToWordConverter
@@ -60,9 +66,17 @@ namespace Kata.NumberInWords
             [20] = "twenty"
         };
 
+        private static Dictionary<int, string> dozens = new Dictionary<int, string>
+        {
+            [2] = "twenty"
+        };
 
         public static string ConvertToWord(int number)
         {
+            if (number > 20)
+            {
+                return dozens[2] + " " + zeroToTwenty[1];
+            }
             return zeroToTwenty[number];
         }
     }
