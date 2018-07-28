@@ -38,7 +38,8 @@ namespace Kata.NumberInWords
         [TestCase(87, "eighty seven")]
         [TestCase(98, "ninety eight")]
         [TestCase(99, "ninety nine")]
-        public void Convert0To99(int number, string numberInWords)
+        [TestCase(100, "one hundred")]
+        public void Convert0To100(int number, string numberInWords)
         {
             Assert.That(NumberToWordConverter.ConvertToWord(number), Is.EqualTo(numberInWords));
         }
@@ -87,10 +88,16 @@ namespace Kata.NumberInWords
         {
             var numbersInNumber = number.ToString().ToCharArray().Select(n => Int32.Parse(n.ToString())).ToArray();
 
+            if (number == 100)
+            {
+                return "one hundred";
+            }
+
             if (number > 20)
             {
                 return dozens[numbersInNumber[0]] + " " + zeroToTwenty[numbersInNumber[1]];
             }
+           
             return zeroToTwenty[number];
         }
     }
